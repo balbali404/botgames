@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
- 
+const perfix ='*'
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -68,7 +69,7 @@ client.on('ready', () => {
             'صراحه  |  ما هي أمنياتك المُستقبلية؟‏',
        ]
           client.on('message', message => {
-			  	var prefix = "*"
+			  	
         if (message.content.startsWith(prefix + 'صراحه')) {
             if(!message.channel.guild) return message.reply('** This command only for servers **');
          var client= new Discord.RichEmbed()
