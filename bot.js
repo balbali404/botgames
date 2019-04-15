@@ -810,74 +810,11 @@ message.channel.send('**اديك 15 ثاني�� لتوجد العاصمه ا�
 
 
 
-client.on('message', message => {
-    if (!points[message.author.id]) points[message.author.id] = { 
-        points: 0,
-      };
-    if (message.content.startsWith(prefix + 'ايموجي')) { 
-        if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-    
-    const type = require('./emoje/emoje.json'); 
-    const item = type[Math.floor(Math.random() * type.length)]; 
-    const filter = response => { 
-        return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-    };
-   message.channel.send({embed: new Discord.RichEmbed().setTitle('لديك ثانيه للاجابه بالجواب الصحيح').setThumbnail(`${item.type}`)}).then(function(m) {
-             setTimeout(function() {
-m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاجابه بالجواب الصحيح').setThumbnail('https://images-ext-2.discordapp.net/external/lLOYcLfSQaNo_5Ex0I-gBD5lIW-FfRXO-W_-ZxSpYLA/https/i.imgur.com/iReHvIZ.png?width=100&height=100')})
-             }, 1000)
-            message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-            .then((collected) => {
-            message.channel.send(`${collected.first().author} ✅ **لقد قمت بكتابة الايموجي بالوقت المناسب**`);
-            console.log(`[Game] ${collected.first().author} Answered with the correct answer`);
-                let won = collected.first().author;
-                points[won.id].points++;
-              })
-              .catch(collected => { 
-                message.channel.send(`:x: **لم يقم أحد بكتابة الايموجي بالوقت المناسب**`);
-                console.log(`[Game] ماحد قال الاجابه`);
-                    })
-            })
-    }
-    });
+   
+       
+        
+        
 
-//==================== JSON
-
-[
-    {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/72/twitter/134/face-with-look-of-triumph_1f624.png",
-        "answers": ["ًںک¤"]
-    },
-    {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/baby_1f476.png",
-        "answers": ["ًں‘¶"]
-    },
-    {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/japanese-goblin_1f47a.png",
-        "answers": ["ًں‘؛"]
-    },
-    {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/see-no-evil-monkey_1f648.png",
-        "answers": ["ًں™ˆ"]
-    },
-        {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/flag-for-yemen_1f1fe-1f1ea.png",
-        "answers": ["ًں‡¾ًں‡ھ"]
-    },
-        {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/comet_2604.png",
-        "answers": ["âک„ï¸ڈ"]
-    },
-        {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/trident-emblem_1f531.png",
-        "answers": ["ًں”±"]
-    },
-        {
-        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/fleur-de-lis_269c.png",
-        "answers": ["âڑœï¸ڈ"]
-    }
-    
-]
 
 
 
